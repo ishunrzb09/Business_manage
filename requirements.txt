@@ -6,7 +6,7 @@ Django==4.2.9
 django-sql-explorer==3.2.1
 isort==5.13.2
 mypy-extensions==1.0.0
-packaging==23.2
+packaging
 pathspec==0.12.1
 platformdirs==4.1.0
 sqlparse==0.4.4
