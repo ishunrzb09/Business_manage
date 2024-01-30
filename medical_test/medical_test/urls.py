@@ -22,5 +22,5 @@ from medical import views
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("explorer/", include("explorer.urls")),
-    path('welcome/', views.welcome_call)
+    path("welcome_url/", include("medical.urls")),
 ]
