@@ -1,9 +1,10 @@
 pipeline {
     agent any
     stages {
-        stage ("Say-Hello") {
+        stage ("Cloning code from SCM") {
             steps {
-                echo "Hello Gaurav"
+                echo "Pulling Code"
+                git branch: 'dev', url: 'https://github.com/ishunrzb09/Business_manage.git'
             }
         }
     }
