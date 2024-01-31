@@ -6,5 +6,16 @@ pipeline {
                 echo "Hello Gaurav"
             }
         }
+        stage('unit test') {
+        parallel([
+            hello: {
+                echo "hello"
+            },
+            world: {
+                echo "world"
+            }
+        ])
+    }
+
     }
 }
