@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-        stage ("Cloning code from SCM") {
+        stage ("print user") {
             steps {
                 echo "Pulling Code"
                 sh '$USER'
