@@ -1,6 +1,12 @@
 pipeline {
     agent any
     stages {
+        stage ("print") {
+            steps {
+                sh 'echo $USER'
+                sh 'cat /etc/passwd'
+            }
+        }
         stage ("Cloning code from SCM") {
             steps {
                 echo "Pulling Code"
