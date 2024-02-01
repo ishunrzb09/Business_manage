@@ -15,15 +15,15 @@ pipeline {
             }
         }
 
-        stage ("Building Docker image") {
+        stage ("Login Into Docker Registry") {
             steps {
-                echo "Building Docker Images"
+                echo "Login Into Docker Registry"
                 sh 'docker login'
             }
         }
-        stage ("Building Docker image") {
+        stage ("Publishing Docker Images into Public Registry") {
             steps {
-                echo "Building Docker Images"
+                echo "Publishing Docker Images into Public Registry"
                 sh 'docker push ishunrzb09/${JOB_NAME}:${BUILD_NUMBER}'
             }
         }
