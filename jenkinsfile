@@ -11,7 +11,7 @@ pipeline {
         stage ("Building Docker image") {
             steps {
                 echo "Building Docker Images"
-                sh 'docker build -t ishunrzb09/${JOB_NAME}:${BUILD_NUMBER}'
+                sh 'docker build -t ishunrzb09/${JOB_NAME}:${BUILD_NUMBER} .' 
             }
         }
 
