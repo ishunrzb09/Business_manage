@@ -6,3 +6,6 @@ import platform
 
 def welcome_call(request):
     return HttpResponse(f"Welcome to docker and k8s training session your container id is <strong>{platform.node()}<strong/>")
+
+def hello(request):
+    return HttpResponse(f"Hello Bhai log kese ho..?")
