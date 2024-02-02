@@ -17,20 +17,20 @@ pipeline {
         stage ("Building Docker image") {
             steps {
                 echo "Building Docker Images"
-                sh 'sudo docker build -t ishunrzb09/${JOB_NAME}:${BUILD_NUMBER} .' 
+                sh 'docker build -t ishunrzb09/${JOB_NAME}:${BUILD_NUMBER} .' 
             }
         }
 
         stage ("Login Into Docker Registry") {
             steps {
                 echo "Login Into Docker Registry"
-                sh 'sudo docker login'
+                sh 'docker login'
             }
         }
         stage ("Publishing Docker Images into Public Registry") {
             steps {
                 echo "Publishing Docker Images into Public Registry"
-                sh 'sudo docker push ishunrzb09/${JOB_NAME}:${BUILD_NUMBER}'
+                sh 'docker push ishunrzb09/${JOB_NAME}:${BUILD_NUMBER}'
             }
         }
     }
