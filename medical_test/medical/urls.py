@@ -4,5 +4,5 @@ from medical import views
 
 urlpatterns = [
     path('v1/', views.welcome_call),
-    path('hello/', views.hello)
+    path('raja/', views.hello)
 ]
