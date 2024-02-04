@@ -11,7 +11,8 @@ pipeline {
             steps {
                 sh """#!/bin/bash
 		        source /opt/virt_env/medi_app/bin/activate
-		        pip install -r requirements.txt --user
+                pip list
+		        pip install -r requirements.txt
 		        """
             }
         }
