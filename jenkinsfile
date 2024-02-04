@@ -16,7 +16,7 @@ pipeline {
             steps {
                 sh """#!/bin/bash
                 mkdir /var/lib/jenkins/envs/
-		        virtualenv --no-site-packages /var/lib/jenkins/envs/${JOB_NAME}
+		        virtualenv /var/lib/jenkins/envs/${JOB_NAME}
 		        """
             }
         }
