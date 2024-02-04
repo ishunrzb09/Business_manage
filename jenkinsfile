@@ -22,15 +22,15 @@ pipeline {
         }
 
         stage (Parallel Pipeline) {
-            stage ("Installing Requirments") {
-                parallel {
-                    steps {
-                        sh """#!/bin/bash
-                        source /var/lib/jenkins/envs/${JOB_NAME}/bin/activate
-                        pip install -r requirements.txt
-                        """
-                            }
-                        
+            parallel {
+                    stage ("Installing Requirments") {
+                        steps {
+                            sh """#!/bin/bash
+                            source /var/lib/jenkins/envs/${JOB_NAME}/bin/activate
+                            pip install -r requirements.txt
+                            """
+                                }
+                    }
 
                     stage ("Checking black") {
                         steps {
@@ -38,8 +38,8 @@ pipeline {
                             source /var/lib/jenkins/envs/${JOB_NAME}/bin/activate
                             black --check . --color -v
                             """
-                                }
-                            }
+                        }
+                    }
 
             }
         }
