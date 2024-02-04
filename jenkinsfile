@@ -24,7 +24,7 @@ pipeline {
         stage ("Installing Requirments") {
             steps {
                 sh """#!/bin/bash
-		        source /var/lib/jenkins/medi_app/medi_app/bin/activate
+		        source /var/lib/jenkins/envs/${JOB_NAME}/bin/activate
 		        pip install -r requirements.txt
 		        """
             }
@@ -33,7 +33,7 @@ pipeline {
         stage ("Checking black") {
             steps {
                 sh """#!/bin/bash
-		        source /var/lib/jenkins/medi_app/medi_app/bin/activate
+		        source /var/lib/jenkins/envs/${JOB_NAME}/bin/activate
 		        black --check . --color -v
 		        """
             }
@@ -42,7 +42,7 @@ pipeline {
         stage ("Checking isort") {
             steps {
                 sh """#!/bin/bash
-		        source /var/lib/jenkins/medi_app/medi_app/bin/activate
+		        source /var/lib/jenkins/envs/${JOB_NAME}/bin/activate
 		        isort --check .
 		        """
             }
@@ -51,7 +51,7 @@ pipeline {
         stage ("Checking Coverage") {
             steps {
                 sh """#!/bin/bash
-		        source /var/lib/jenkins/medi_app/medi_app/bin/activate
+		        source /var/lib/jenkins/envs/${JOB_NAME}/bin/activate
 		        coverage run medical_test/manage.py test -v 2 && coverage report --fail-under=90
 		        """
             }
