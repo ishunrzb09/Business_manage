@@ -9,14 +9,14 @@ pipeline {
 
         // Befor Installing requirmenst it required to install virtualenv and create virtual env by below commands
         // install virtualenv --> sudo apt install python3-pip/sudo apt install python3-virtualenv
-        // To create virtual env -->  virtualenv --no-site-packages /opt/virt_env/medi_app
+        // To create virtual env -->  virtualenv --no-site-packages /var/lib/jenkins/envs/medi_app/bin
         // sudo apt install python3-pip -y
         // sudo apt install python3-virtualenv -y
         stage ("Creating Virtual ENV") {
             steps {
                 sh """#!/bin/bash
-                mkdir -r /opt/envs/${JOB_NAME}
-		        virtualenv --no-site-packages /opt/envs/${JOB_NAME}
+                mkdir /var/lib/jenkins/envs/
+		        virtualenv --no-site-packages /var/lib/jenkins/envs/${JOB_NAME}
 		        """
             }
         }
