@@ -11,5 +11,16 @@ def welcome_call(request):
     )
 
 
+
+
+
+
+
+
+
+
 def hello(request):
+
+
+    
     return HttpResponse(f"this is test project for medical application")
