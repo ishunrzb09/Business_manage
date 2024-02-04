@@ -7,13 +7,19 @@ pipeline {
             }
         }
 
-        stage ("Checkin black") {
+        stage ("Installing Requirments") {
+            steps {
+                git branch: 'dev', url: 'https://github.com/ishunrzb09/Business_manage'
+            }
+        }
+
+        stage ("Checking black") {
             steps {
                 sh 'black --check . --color -v'
             }
         }
 
-        stage ("Checkin isort") {
+        stage ("Checking isort") {
             steps {
                 sh 'isort --check .'
             }
