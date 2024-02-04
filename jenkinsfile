@@ -20,7 +20,7 @@ pipeline {
         stage ("Checking black") {
             steps {
                 sh """#!/bin/bash
-		        source /opt/virt_env/medi_app/bin/activate
+		        source /var/lib/jenkins/medi_app/medi_app/bin/activate
 		        black --check . --color -v
 		        """
             }
@@ -28,7 +28,10 @@ pipeline {
 
         stage ("Checking isort") {
             steps {
-                sh 'isort --check .'
+                sh """#!/bin/bash
+		        source /var/lib/jenkins/medi_app/medi_app/bin/activate
+		        isort --check .
+		        """
             }
         }
 
