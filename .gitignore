@@ -1,4 +1,5 @@
 django_env
 medical_test/db.sqlite3
+medical_test/.coverage
 */*/*/*.pyc
 */*/*/*/*.pyc
