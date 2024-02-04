@@ -35,6 +35,15 @@ pipeline {
             }
         }
 
+        stage ("Checking Coverage") {
+            steps {
+                sh """#!/bin/bash
+		        source /var/lib/jenkins/medi_app/medi_app/bin/activate
+		        coverage run manage.py test -v 2 && coverage report --fail-under=95
+		        """
+            }
+        }
+
         stage ("Building Docker image") {
             steps {
                 sh 'docker build -t ishunrzb09/${JOB_NAME}:${BUILD_NUMBER} .' 
