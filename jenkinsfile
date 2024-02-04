@@ -10,7 +10,7 @@ pipeline {
         // Befor Installing requirmenst it required to install virtualenv and create virtual env by below commands
         // install virtualenv --> sudo apt install python3-pip/sudo apt install python3-virtualenv
         // To create virtual env -->  virtualenv --no-site-packages /opt/virt_env/medi_app
-        stage ("Installing Requirments") {
+        stage ("Creating Virtual ENV") {
             steps {
                 sh """#!/bin/bash
 		        sudo apt install python3-pip -y
