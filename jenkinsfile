@@ -7,11 +7,24 @@ pipeline {
             }
         }
 
+        // Befor Installing requirmenst it required to install virtualenv and create virtual env by below commands
+        // install virtualenv --> sudo apt install python3-pip/sudo apt install python3-virtualenv
+        // To create virtual env -->  virtualenv --no-site-packages /opt/virt_env/medi_app
+        stage ("Installing Requirments") {
+            steps {
+                sh """#!/bin/bash
+		        sudo apt install python3-pip -y
+                sudo apt install python3-virtualenv -y
+                mkdir -r /opt/envs/${JOB_NAME}
+		        virtualenv --no-site-packages /opt/envs/${JOB_NAME}
+		        """
+            }
+        }
+
         stage ("Installing Requirments") {
             steps {
                 sh """#!/bin/bash
 		        source /var/lib/jenkins/medi_app/medi_app/bin/activate
-                pip list
 		        pip install -r requirements.txt
 		        """
             }
