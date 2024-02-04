@@ -9,7 +9,7 @@ pipeline {
 
         stage ("Installing Requirments") {
             steps {
-                git branch: 'dev', url: 'https://github.com/ishunrzb09/Business_manage'
+                sh 'pip install -r requirments.txt'
             }
         }
 
