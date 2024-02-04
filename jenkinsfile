@@ -21,7 +21,7 @@ pipeline {
             }
         }
 
-        stage (Parallel Pipeline) {
+        stage ("Parallel Pipeline") {
             parallel {
                     stage ("Installing Requirments") {
                         steps {
