@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage ("Cloning code from SCM") {
             steps {
-                git branch: 'dev', url: 'https://github.com/ishunrzb09/Business_manage.git'
+                git branch: 'dev', url: 'https://github.com/ishunrzb09/Business_manage'
             }
         }
 
