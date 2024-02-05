@@ -135,7 +135,9 @@ pipeline {
 
         stage ("Spinning Container from downloaded image") {
             steps {
+                if (${BRANCH_NAME} == "dev" | ${BRANCH_NAME} == "prod"){
                 sh 'docker run -itd --name=medical_container -p 8000:8000 ishunrzb09/${JOB_NAME}:${BUILD_NUMBER}'
+                }
             }
         }
     }
