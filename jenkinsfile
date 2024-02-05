@@ -21,24 +21,15 @@ pipeline {
             }
         }
 
-        stage ("Installing Requirments") {
-            steps {
-                sh """#!/bin/bash
-		        source /var/lib/jenkins/envs/${JOB_NAME}/bin/activate
-		        pip install -r requirements.txt
-		        """
-            }
-        }
-
         stage ("Parallel Pipeline") {
             parallel {
-                    stage ("Unit Test") {
+                    stage ("Installing Requirments") {
                         steps {
                             sh """#!/bin/bash
                             source /var/lib/jenkins/envs/${JOB_NAME}/bin/activate
-                            python medical_test/manage.py test
+                            pip install -r requirements.txt
                             """
-                        }
+                                }
                     }
 
                     stage ("Checking black") {
@@ -49,53 +40,45 @@ pipeline {
                             """
                         }
                     }
-                    stage ("Checking isort") {
-                        steps {
-                            sh """#!/bin/bash
-                            source /var/lib/jenkins/envs/${JOB_NAME}/bin/activate
-                            isort --check .
-                            """
-                        }
-                    }
-
-                    stage ("Checking Coverage") {
-                        steps {
-                            sh """#!/bin/bash
-                            source /var/lib/jenkins/envs/${JOB_NAME}/bin/activate
-                            coverage run medical_test/manage.py test -v 2 && coverage report --fail-under=90
-                            """
-                        }
-                    }
 
             }
         }
 
-        // stage ("Checking black") {
-        //     steps {
-        //         sh """#!/bin/bash
-		//         source /var/lib/jenkins/envs/${JOB_NAME}/bin/activate
-		//         black --check . --color -v
-		//         """
-        //     }
-        // }
+        stage ("Installing Requirments") {
+            steps {
+                sh """#!/bin/bash
+		        source /var/lib/jenkins/envs/${JOB_NAME}/bin/activate
+		        pip install -r requirements.txt
+		        """
+            }
+        }
 
-        // stage ("Checking isort") {
-        //     steps {
-        //         sh """#!/bin/bash
-		//         source /var/lib/jenkins/envs/${JOB_NAME}/bin/activate
-		//         isort --check .
-		//         """
-        //     }
-        // }
+        stage ("Checking black") {
+            steps {
+                sh """#!/bin/bash
+		        source /var/lib/jenkins/envs/${JOB_NAME}/bin/activate
+		        black --check . --color -v
+		        """
+            }
+        }
 
-        // stage ("Checking Coverage") {
-        //     steps {
-        //         sh """#!/bin/bash
-		//         source /var/lib/jenkins/envs/${JOB_NAME}/bin/activate
-		//         coverage run medical_test/manage.py test -v 2 && coverage report --fail-under=90
-		//         """
-        //     }
-        // }
+        stage ("Checking isort") {
+            steps {
+                sh """#!/bin/bash
+		        source /var/lib/jenkins/envs/${JOB_NAME}/bin/activate
+		        isort --check .
+		        """
+            }
+        }
+
+        stage ("Checking Coverage") {
+            steps {
+                sh """#!/bin/bash
+		        source /var/lib/jenkins/envs/${JOB_NAME}/bin/activate
+		        coverage run medical_test/manage.py test -v 2 && coverage report --fail-under=90
+		        """
+            }
+        }
 
         stage ("Building Docker image") {
             steps {
