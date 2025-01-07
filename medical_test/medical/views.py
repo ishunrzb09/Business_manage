@@ -2,7 +2,7 @@ import platform
 
 from django.shortcuts import HttpResponse, render
 
-# Create your views here.
+# Creat your views here.
 
 
 def welcome_call(request):
