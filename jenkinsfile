@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-        stage ("Cloning code from SCM") {
+        stage ("Cloning code from SCM ") {
             steps {
                 git branch: 'dev', url: 'https://github.com/ishunrzb09/Business_manage'
             }
