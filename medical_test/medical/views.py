@@ -7,7 +7,7 @@ from django.shortcuts import HttpResponse, render
 
 def welcome_call(request):
     return HttpResponse(
-        f"Welcome to docker and k8s training session your container id is <strong>{platform.node()}<strong/> hello ankit"
+        f"Welcome to docker and k8s training session your container id is <strong>{platform.node()}<strong/>"
     )
 
 
